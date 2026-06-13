@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ygd0twccsomt"]
+
+[ext_resource type="Script" uid="uid://diu4utj5ijku" path="res://beat_test.gd" id="1_2xcfx"]
+[ext_resource type="Script" uid="uid://dos3qhffr4v0a" path="res://addons/rhythm_notifier/rhythm_notifier.gd" id="2_2kymj"]
+[ext_resource type="AudioStream" uid="uid://bmj1yyx4yl1ax" path="res://megavania.mp3" id="3_8urpd"]
+[ext_resource type="Script" uid="uid://dcmbcq4pphbhw" path="res://input_handler.gd" id="4_2kymj"]
+
+[node name="BeatTest" type="Node2D" unique_id=1459543690]
+script = ExtResource("1_2xcfx")
+
+[node name="InputHandler" type="Node" parent="." unique_id=685193595]
+script = ExtResource("4_2kymj")
+
+[node name="RhythmNotifier" type="Node" parent="." unique_id=383233808 node_paths=PackedStringArray("audio_stream_player")]
+script = ExtResource("2_2kymj")
+bpm = 30.0
+beat_length = 2.0
+audio_stream_player = NodePath("AudioStreamPlayer")
+metadata/_custom_type_script = "uid://dos3qhffr4v0a"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RhythmNotifier" unique_id=1945471176]
+stream = ExtResource("3_8urpd")
