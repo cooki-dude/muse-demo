@@ -1,22 +1,117 @@
 [gd_scene format=3 uid="uid://ygd0twccsomt"]
 
-[ext_resource type="Script" uid="uid://diu4utj5ijku" path="res://beat_test.gd" id="1_2xcfx"]
+[ext_resource type="Script" uid="uid://diu4utj5ijku" path="res://audio_handler.gd" id="1_2xcfx"]
 [ext_resource type="Script" uid="uid://dos3qhffr4v0a" path="res://addons/rhythm_notifier/rhythm_notifier.gd" id="2_2kymj"]
 [ext_resource type="AudioStream" uid="uid://bmj1yyx4yl1ax" path="res://megavania.mp3" id="3_8urpd"]
-[ext_resource type="Script" uid="uid://dcmbcq4pphbhw" path="res://input_handler.gd" id="4_2kymj"]
+[ext_resource type="Script" uid="uid://dcmbcq4pphbhw" path="res://mania_input_handler.gd" id="4_2kymj"]
+[ext_resource type="Script" uid="uid://oah7s4ilvkmt" path="res://mania_manager.gd" id="5_7tviy"]
+[ext_resource type="Texture2D" uid="uid://b15ppkhh5088w" path="res://icon.svg" id="6_3slxh"]
 
-[node name="BeatTest" type="Node2D" unique_id=1459543690]
+[node name="AudioHandler" type="Node2D" unique_id=1459543690]
 script = ExtResource("1_2xcfx")
+music_delay = 1
 
-[node name="InputHandler" type="Node" parent="." unique_id=685193595]
+[node name="AudioHandler" type="Node" parent="." unique_id=685193595]
 script = ExtResource("4_2kymj")
 
-[node name="RhythmNotifier" type="Node" parent="." unique_id=383233808 node_paths=PackedStringArray("audio_stream_player")]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1945471176]
+stream = ExtResource("3_8urpd")
+
+[node name="RhythmNotifier" type="Node" parent="." unique_id=383233808]
 script = ExtResource("2_2kymj")
 bpm = 30.0
 beat_length = 2.0
-audio_stream_player = NodePath("AudioStreamPlayer")
 metadata/_custom_type_script = "uid://dos3qhffr4v0a"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RhythmNotifier" unique_id=1945471176]
-stream = ExtResource("3_8urpd")
+[node name="UI" type="Node" parent="." unique_id=1834030104]
+
+[node name="HitLine" type="ColorRect" parent="UI" unique_id=1823780457]
+offset_left = -24.0
+offset_top = 600.0
+offset_right = 1222.0
+offset_bottom = 602.0
+
+[node name="LaneOne" type="ColorRect" parent="UI" unique_id=861756653]
+offset_left = 750.0
+offset_top = -22.0
+offset_right = 790.0
+offset_bottom = 671.0
+color = Color(1, 1, 1, 0.25490198)
+
+[node name="Label" type="Label" parent="UI/LaneOne" unique_id=705693351]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 576.0
+offset_right = 54.0
+offset_bottom = 599.0
+text = "A"
+
+[node name="LaneTwo" type="ColorRect" parent="UI" unique_id=966535710]
+offset_left = 839.0
+offset_top = -16.0
+offset_right = 879.0
+offset_bottom = 677.0
+color = Color(1, 1, 1, 0.25490198)
+
+[node name="Label" type="Label" parent="UI/LaneTwo" unique_id=1327556671]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 574.0
+offset_right = 54.0
+offset_bottom = 597.0
+text = "S"
+
+[node name="LaneThree" type="ColorRect" parent="UI" unique_id=410871261]
+offset_left = 942.0
+offset_top = -21.0
+offset_right = 982.0
+offset_bottom = 672.0
+color = Color(1, 1, 1, 0.25490198)
+
+[node name="Label" type="Label" parent="UI/LaneThree" unique_id=1215463664]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 580.0
+offset_right = 55.0
+offset_bottom = 603.0
+text = "D"
+
+[node name="LaneFour" type="ColorRect" parent="UI" unique_id=1513977221]
+offset_left = 1032.0
+offset_top = -24.0
+offset_right = 1072.0
+offset_bottom = 669.0
+color = Color(1, 1, 1, 0.25490198)
+
+[node name="Label" type="Label" parent="UI/LaneFour" unique_id=258929372]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 585.0
+offset_right = 56.0
+offset_bottom = 608.0
+text = "f"
+
+[node name="ManiaManager" type="Node" parent="." unique_id=1678871232]
+script = ExtResource("5_7tviy")
+
+[node name="BaseNotes" type="Node" parent="ManiaManager" unique_id=36726744]
+
+[node name="Note1" type="Sprite2D" parent="ManiaManager/BaseNotes" unique_id=959005902]
+position = Vector2(770, -38)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_3slxh")
+
+[node name="Note2" type="Sprite2D" parent="ManiaManager/BaseNotes" unique_id=1024441064]
+position = Vector2(859, -38)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_3slxh")
+
+[node name="Note3" type="Sprite2D" parent="ManiaManager/BaseNotes" unique_id=530315240]
+position = Vector2(962, -38)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_3slxh")
+
+[node name="Note4" type="Sprite2D" parent="ManiaManager/BaseNotes" unique_id=1965898330]
+position = Vector2(1054, -38)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_3slxh")
